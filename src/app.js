@@ -7,6 +7,7 @@ import config from './config/index.js';
 import { notFoundHandler, errorHandler } from './middleware/error.js';
 
 import authRoutes from './routes/auth.routes.js';
+import doctorRoutes from './routes/doctor.routes.js';
 
 export const buildApp = () => {
     const app = express();
@@ -29,7 +30,7 @@ export const buildApp = () => {
     });
 
     app.use('/auth', authRoutes);
-
+    app.use('/doctor', doctorRoutes); 
 
     app.use(notFoundHandler);
     app.use(errorHandler);
