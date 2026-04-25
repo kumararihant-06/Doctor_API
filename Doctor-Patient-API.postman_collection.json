@@ -1,0 +1,484 @@
+{
+  "info": {
+    "_postman_id": "3ef29f96-3a57-4901-8527-dd77c2a2abf5",
+    "name": "Doctor-Patient-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46356428",
+    "_collection_link": "https://go.postman.co/collection/46356428-3ef29f96-3a57-4901-8527-dd77c2a2abf5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Doctor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"name\": \"Dr Ramesh\",\n     \"email\": \"Ramesh@example.com\",\n     \"password\": \"password\",\n     \"role\": \"doctor\"\n   }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Patient",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"name\": \"Mukesh Kumar\",\n     \"email\": \"mukesh@example.com\",\n     \"password\": \"password\",\n     \"role\": \"patient\"\n   }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Doctor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"email\": \"ramesh@example.com\", \"password\": \"password\" }\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Patient",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"email\": \"mukesh@example.com\", \"password\": \"password\" }\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify session",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/verify",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "verify"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "item": [
+        {
+          "name": "Create Manual Slot",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"startTime\": \"2026-05-15T10:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/doctor/availability/manual",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "doctor",
+                "availability",
+                "manual"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Bulk Slots",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2026-05-16\",\n  \"startTime\": \"09:00\",\n  \"slots\": 6,\n  \"slotDurationMinutes\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/doctor/availability/bulk",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "doctor",
+                "availability",
+                "bulk"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List my Slots",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date\": \"2026-05-16\",\n  \"startTime\": \"09:00\",\n  \"slots\": 6,\n  \"slotDurationMinutes\": 30\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/doctor/availability?date=2026-05-15",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "doctor",
+                "availability"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2026-05-15",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Slot",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"startTime\": \"2026-05-15T14:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/doctor/availability/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "doctor",
+                "availability",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "63bececa-453a-4f7f-872d-25bb4718b5eb"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Slot",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/doctor/availability/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "doctor",
+                "availability",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "63bececa-453a-4f7f-872d-25bb4718b5eb"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Patient",
+      "item": [
+        {
+          "name": "List open Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/patient/slots/open",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "patient",
+                "slots",
+                "open"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\n{ \"slotId\": \"6003ea5b-eaa5-4b4b-a533-a23586e48f9b\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/patient/appointments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "patient",
+                "appointments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List my appointments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/patient/appointments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "patient",
+                "appointments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List one appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/patient/appointments/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "patient",
+                "appointments",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "678fc3c1-a822-4e27-b35a-c9865b3b0a32"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List one appointment Copy",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/patient/appointments/:id/cancel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "patient",
+                "appointments",
+                ":id",
+                "cancel"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "678fc3c1-a822-4e27-b35a-c9865b3b0a32"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
